@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+
+	<div id="app">
+		<h3>Interpolition kullanımı</h3>
+	  <p>
+	    {{ name }} {{ methods() }}
+	  </p>
+	  <hr>
+	  <h3>v-bind kullanımı</h3>
+	  <a v-bind:href="link">BioBilgi</a> <br><br>
+	  {{ title }}
+	  <input type="text" v-on:input="changeTitle">
+	  <hr>
+	  <h3>v-once kullanımı</h3>
+	  <p v-once>
+	  	{{ title }}
+	  </p>
+	  <hr>
+	  <h3>v-html kullanımı</h3>
+	  <p v-html="blogLink"></p>
+	  <hr>
+	  
+	</div>
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

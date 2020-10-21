@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Dinlemek</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+
+        <button v-on:click="showAlert">Show Alert</button>
+        <button v-on:click="changeCount">Change Count</button>
+        <p>{{ count }}</p>
+        <hr>
+        <h4>Template İçerisine JS Yazmak</h4>
+        <p> {{ count > 10 ? "Sayı 10'dan büyük." : "Sayı 10'dan küçük." }} </p>
+        <hr>
+        <h4>Mouse Coordinatlarını Yakalama</h4>
+        <p v-on:mousemove="updateCoords">Koordinatler: {{ x }} , {{ y }}</p>
+        <hr>
+        <h4>Foksiyona Parametre Yollamak</h4>
+        <button v-on:click="alertName('Sadettin')">Alert Name</button>
+        <button v-on:click="changeCount2(3, $event)">Change Count +3</button>
+        <p>{{ count }}</p>
+        <hr>
+        <h4>Event Modifier</h4>
+        <p v-on:mousemove="updateCoords">Koordinatler: {{ x }} , {{ y }}
+            <span v-on:mousemove.stop> Bu Alanda Çalışmasın</span> <br>
+            <a href="http://vuejs.org/v2/guide/events.html#Event-Modifiers">Modifierların Listesi</a>
+        </p>
+        <hr>
+        <h4>Klavye Event</h4>
+        <p>Klavyeden elini çektiğin anda:
+            <input type="text" v-on:keyup="alertInput">
+        </p>
+        <p>Enter'e basılınca:
+            <input type="text" v-on:keyup.enter="alertInput">
+        </p>
+        <p>Enter'e ya da space basılınca:
+            <input type="text" v-on:keyup.enter.space="alertInput">
+        </p>
+        <a href="http://vuejs.org/v2/guide/events.html#Key-Modifiers	">Klavye Event Listesi</a>
+
+
+
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>

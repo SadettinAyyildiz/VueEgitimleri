@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue Demo</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <p>
+    {{ title }} {{ name }}
+  </p>
+  <hr>
+  <input type="text" v-on:input="changeTitle">
+</div>
+
+
+<script type="text/javascript">
+	new Vue ({
+	el: "#app",
+  data: {
+  	title: "Hello world!",
+    name: "Sadettin"
+  },
+  methods: {
+  	changeTitle : function() {
+    	this.title = event.target.value;
+    }
+  }
+});
+</script>
+</body>
+</html>

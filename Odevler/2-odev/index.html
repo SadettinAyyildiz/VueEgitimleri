@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odev 2</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h4>1-Butona Tıklandığında Alert Kutusu Çıksın</h4>
+        <input type="text" v-on:keyup="showAlert">
+        <hr>
+        <h4>2-İnputa Girilen Değerin Bastırılması</h4>
+        <input type="text" v-on:input="changeMessage"><br>
+        {{ message }}
+        <hr>
+        <h4>3-Enter Tıklandığında Inputtaki Mesajın Bastırılması</h4>
+        <input type="text" v-on:keyup.enter="clickEnter"><br>
+        {{ message2 }}
+
+
+    </div>
+    
+
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
