@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Css Class Olmadan Dinamik Style</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="box" :style="{ 'background-color' : color }"></div>
+        <div class="box" :style="{ backgroundColor : color }"></div>
+        <div class="box" :style="customStyle"></div>
+        <div class="box" :style="[customStyle,{ width: height + 'px'}]"></div>
+        <hr>
+        <input type="text" v-model="color">
+        <input type="text" v-model="height">
+
+
+
+    </div>
+    
+    
+    
+
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
