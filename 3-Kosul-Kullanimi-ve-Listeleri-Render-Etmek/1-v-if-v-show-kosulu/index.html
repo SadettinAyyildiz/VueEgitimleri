@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> v-if / v-show kullanımı</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<!-- vi-if elementi dom üzerinden tamamen kaldırır -->
+<!-- vi-show elementi dom üzerinde tutar sadece göstermez -->
+
+<body>
+    <div id="app">
+        <p v-if="show">Beni görebilirsin :)</p>
+        <p v-else>Beni göremezsin :(</p>
+        <button @click="show = !show">Gizle/Göster</button>
+        <br>
+        <hr>
+
+
+        <p> {{sayi}} </p>
+        <p v-if="sayi > 10">Sayı 10'dan Büyüktür.</p>
+        <p v-else-if="sayi < 10">Sayı 10'dan Küçüktür.</p>
+        <p v-else>Sayı 10'a Eşittir.</p>
+        <button @click="changeCount">Arttır</button>
+        <br>
+        <hr>
+
+        <button @click="showParagh = !showParagh">Göster/Gizle</button>
+        <p v-show="showParagh">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nemo sed odio cum facilis aspernatur
+            molestiae enim inventore quibusdam fuga quos eum amet illo deleniti animi, soluta magnam tempore iste
+            sapiente eius voluptatum. Sapiente, rerum.</p>
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>

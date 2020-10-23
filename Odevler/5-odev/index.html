@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödev 5</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h3>1:</h3>
+        <button @click="show = !show">Toggle</button>
+        <p v-if="show">Beni görebiliyor musun?</p>
+        <p v-else>Ya da beni görebiliyor musun?</p>
+
+        <p v-show="show">Beni görebiliyor musun?</p>
+        <p v-show="!show">Ya da beni görebiliyor musun?</p>
+        <hr>
+        <h3>2:</h3>
+        <ul>
+            <li v-for="(name, index) in names"> {{ name }} - {{ index }}</li>
+        </ul>
+        <hr>
+        <h3>3:</h3>
+        <ul>
+            <li v-for="member in members">
+                <ul>
+                    <li v-for="(value, key, index) in member">
+                        <strong>{{key}}</strong> - {{ value }} - {{ index }}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <hr>
+        <h3>4:</h3>
+        <ul>
+            <li v-for="member in members">
+                <ul>
+                    <li v-for="(value, keys, index) in member">
+                        <span v-if="index != 2"> {{ value }} </span>
+                        <ul v-if="index == 2">
+                            <li v-for="val in value"> {{ val }} </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>

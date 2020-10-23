@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> v-for kullanımı</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="product in products"> {{ product }} </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="(product, index) in products"> {{ product }} - {{ index }} </li>
+        </ul>
+        <hr>
+
+        <ul>
+            <li v-for="(product, index) in products"> {{ product }} - {{ index }} </li>
+        </ul>
+        <button @click="products.push('Hoperlör')">Ekle</button>
+        <hr>
+
+        <div v-for="(product, index) in products">
+            <h3> {{ product }} </h3>
+            <p> {{ index }} </p>
+        </div>
+        <hr>
+
+        <h2>Template Kullanımı // Vuejs tarafından render edilmez</h2>
+        <template v-for="(product, index) in products">
+            <h3> {{ product }} </h3>
+            <p> {{ index }} </p>
+        </template>
+        <hr>
+        <ul>
+            <li v-for="personel in persons">
+                <ul>
+                    <li v-for="(value, key, index) in personel"> <strong>{{ key }}: </strong>{{ value }} - {{ index }} </li>
+                </ul>
+            </li>
+        </ul>
+
+        <hr>
+        <span v-for="i in 5"> {{ i }} </span>
+
+
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
