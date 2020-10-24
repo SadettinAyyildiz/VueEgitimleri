@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Çoklu Instance</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app1">
+        <h1 ref="heading"> {{ title }}</h1>
+        <button @click="show" ref="myButton">Paragrafı Göster</button>
+        <p v-if="showParagraph">Her zaman göremeyebiliriz!!!</p>
+    </div>
+
+    <div id="app2">
+        <h1 ref="heading"> {{ title }}</h1>
+        <button @click="changeTitle">Inst1 Title Değiştir</button>
+    </div>
+    
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
