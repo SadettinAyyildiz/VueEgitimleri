@@ -14,32 +14,38 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="email">Kullanıcı Adı</label>
-                    <input type="text" id="username" class="form-control" v-model="userData.username">
+                    <!-- v-model kullanmadan custom kontrol -->
+                    <input 
+                      type="text" 
+                      id="username" 
+                      class="form-control" 
+                      :value="userData.username"
+                      @input="userData.username = $event.target.value">
                   </div>
                   <div class="form-group">
                     <label for="password">Şifre</label>
-                    <input type="password" id="password" class="form-control" v-model="userData.password">
+                    <input type="password" id="password" class="form-control" v-model.lazy.trim="userData.password">
                   </div>
                   <div class="form-group">
                     <label for="age">Yaş</label>
-                    <input type="number" id="age" class="form-control" v-model="userData.age">
+                    <input type="number" id="age" class="form-control" v-model.trim="userData.age">
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12 form-group">
                   <label for="message">Açıklama</label><br>
-                  <textarea id="message" rows="3" class="form-control"></textarea>
+                  <textarea id="message" rows="3" class="form-control" v-model="userData.message"></textarea>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>
-                      <input type="checkbox" value="yazilim"> Yazılım
+                      <input v-model="userData.interests" type="checkbox" value="yazilim"> Yazılım
                     </label>
                     <label>
-                      <input type="checkbox" value="donanim"> Donanım
+                      <input v-model="userData.interests" type="checkbox" value="donanim"> Donanım
                     </label>
                   </div>
 
@@ -48,25 +54,32 @@
               <div class="row">
                 <div class="col-md-12 form-group">
                   <label>
-                    <input type="radio" value="erkek"> Erkek
+                    <input v-model="userData.gender" type="radio" value="erkek"> Erkek
                   </label>
                   <label>
-                    <input type="radio" value="kadin"> Kadın
+                    <input v-model="userData.gender" type="radio" value="kadin"> Kadın
                   </label>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12 from-group">
                   <label>Şehir</label>
-                  <select class="form-control">
-                    <option></option>
+                  <select v-model="userData.selectedCity" class="form-control">
+                    <option :selected="city == 'İzmir'" v-for="city in userData.cities" :key="city"> {{ city }} </option>
                   </select>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <app-switch v-model="switched"></app-switch>
                 </div>
               </div>
               <hr>
               <div class="row">
                 <div class="col-md-12">
                   <button
+                    @click.prevent="submit"
                     class="btn btn-primary">Gönder!
                   </button>
                 </div>
@@ -75,7 +88,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6" v-if="isSubmited">
           <div class="panel panel-info">
             <div class="panel-heading">
               <h4>Form Verileri</h4>
@@ -84,14 +97,15 @@
               <p>Kullanıcı Adı: {{ userData.username }}</p>
               <p>Şifre: {{ userData.password }}</p>
               <p>Yaş: {{ userData.age }}</p>
-              <p>Açıklama: </p>
+              <!-- white-space: pre; ile enterleri algılar ve alt satırda gösterir. CSS kodudur -->
+              <p style="white-space: pre;">Açıklama: {{ userData.message }}</p>
               <p><strong>İlgi Alanları</strong></p>
               <ul>
-                <li></li>
+                <li v-for="interest in userData.interests" :key="interest"> {{ interest }}</li>
               </ul>
-              <p>Cinsiyet:</p>
-              <p>Şehir:</p>
-              <p>Toggle:</p>
+              <p>Cinsiyet: {{ userData.gender }}</p>
+              <p>Şehir: {{ userData.selectedCity }}</p>
+              <p>Toggle: {{ switched }}</p>
             </div>
           </div>
       </div>
@@ -101,14 +115,32 @@
 </template>
 
 <script>
+
+  import Switch from './Switch';
+
   export default {
+    components: {
+      appSwitch: Switch
+    },
     data(){
       return{
         userData: {
           username: '',
           password: '',
-          age: ''
-        }
+          age: '',
+          message: '',
+          interests: [],
+          gender: '',
+          cities: ['İstanbul', 'İzmir', 'Ankara', 'Muğla', 'Antalya'],
+          selectedCity: ''
+        },
+        switched: true,
+        isSubmited: false
+      }
+    },
+    methods: {
+      submit(){
+        this.isSubmited = true;
       }
     }
   }
