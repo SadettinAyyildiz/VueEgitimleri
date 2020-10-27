@@ -10,14 +10,20 @@
         <ul>
           <li v-for="product in filtered" :key="product"> {{ product }} </li>
         </ul>
-
+        <app-list></app-list>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+
+import FilterList from './FilterList';
+
 export default {
+  components: {
+    appList: FilterList
+  },
   data(){
     return {
       message: "Hello world!!",
