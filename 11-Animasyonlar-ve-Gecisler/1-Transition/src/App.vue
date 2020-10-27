@@ -4,14 +4,32 @@
       <div class="col-md-6 col-md-offset-3">
         <h3>Animation ve Transition</h3>
         <hr>
+        <select class="form-control" v-model="activeEffect">
+          <option value="fade">Fade</option>
+          <option value="slide">Slide</option>
+        </select>
+        <hr>
         <button class="btn btn-primary" @click="show = !show">Kutuyu Göster / Gizle</button>
         <br><br>
-        <transition name="fade">
+        <transition :name="activeEffect">
           <div class="alert alert-success" v-if="show">Bu bir alert kutusudur...</div>
         </transition>
         <hr>
-        <transition name="slide">
-          <div class="alert alert-warning" v-if="show">Bu bir alert kutusudur...</div>
+        <transition name="slide" type="animation" appear>
+          <div class="alert alert-warning" v-if="!show">Bu bir alert kutusudur...</div>
+        </transition>
+        <hr>
+        <transition
+          enter-class=""
+          enter-active-class="animated shake"
+          leave-class=""
+          leave-active-class="animated swing"
+          appear>
+          <div class="alert alert-warning" v-if="!show">Bu bir alert kutusudur...</div>
+        </transition>
+        <transition name="fade" mode="out-in">
+          <div class="alert alert-success" v-if="show">Bu bir alert kutusudur...</div>
+          <div class="alert alert-danger" v-else>Bu bir alert kutusudur...</div>
         </transition>
 
         
@@ -24,7 +42,8 @@
 export default {
   data(){
     return {
-      show : false
+      show : false,
+      activeEffect: "fade"
     }
   }
 }
@@ -45,16 +64,20 @@ export default {
   opacity: 0;
 }
 
-.slide-enter{}
+.slide-enter{
+  opacity: 0;
+}
 .slide-enter-active{
   animation: slide-in 1s ease-out forwards;
+  transition: opacity 0.5s;
 }
 .slide-leave{
 
 }
 .slide-leave-active{
-    animation: slide-out 1s ease-out forwards;
-
+  animation: slide-out 1s ease-out forwards;
+  transition: opacity 3s;
+  opacity: 0;
 }
 
 @keyframes slide-in {
