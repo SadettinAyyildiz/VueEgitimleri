@@ -3,7 +3,13 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <h3>Filter ve Mixins</h3>
-        <p>{{ message | upper }}</p>
+        <p>{{ message | upper | lower }}</p>
+
+        <hr>
+        <input type="text">
+        <ul>
+          <li v-for="product in products" :key="product"> {{ product }} </li>
+        </ul>
 
       </div>
     </div>
@@ -14,7 +20,8 @@
 export default {
   data(){
     return {
-      message: "Hello world!!"
+      message: "Hello world!!",
+      products: ["Klavye", "Monitör", "Mouse", "Hoperlör", "Leptop"]
     }
   },
   filters: {
