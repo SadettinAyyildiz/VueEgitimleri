@@ -6,9 +6,9 @@
         <p>{{ message | upper | lower }}</p>
 
         <hr>
-        <input type="text">
+        <input type="text" v-model="searchText">
         <ul>
-          <li v-for="product in products" :key="product"> {{ product }} </li>
+          <li v-for="product in filtered" :key="product"> {{ product }} </li>
         </ul>
 
       </div>
@@ -21,12 +21,20 @@ export default {
   data(){
     return {
       message: "Hello world!!",
-      products: ["Klavye", "Monitör", "Mouse", "Hoperlör", "Leptop"]
+      products: ["Klavye", "Monitör", "Mouse", "Hoperlör", "Leptop"],
+      searchText: ''
     }
   },
   filters: {
     upper(value){
       return value.toUpperCase();
+    }
+  },
+  computed: {
+    filtered(){
+      return this.products.filter((element) => {
+        return element.match(this.searchText);
+      })
     }
   }
 }
