@@ -1,31 +1,27 @@
 <template>
   <div class="container">
     <div class="col-md-6 col-md-offset-3">
-      <h3>Directive Sınavı</h3>
-
-      <button v-custom-on:click="clicked" class="btn btn-success">
-        Tıkla!
-      </button>
+      <h3>1:</h3>
+      <input type="text" v-model="message">
+      <p>Mesaj: {{ message }}</p>
+      <p>Tersten: {{ message | reverseString }}</p>
+      <p>Karakter sayısı: {{ message | kelimeSayisi }}</p>
+      <hr>
+      <h3>2:</h3>
+      <p>Mesaj: {{ message }}</p>
+      <p>Tersten: {{ filtered }}</p>
+      <p>Karakter sayısı: {{ filtered2 }}</p>
+      
     </div>
 
   </div>
 </template>
 
 <script>
+
+import { demoMixin } from './demoMixin'
+
 export default {
-  directives: {
-    customOn : {
-      bind(el, binding){
-        el.onclick = function(){
-          binding.value();
-        }
-      }
-    }
-  },
-  methods: {
-    clicked(){
-      alert('Tıklandı');
-    }
-  }
+  mixins: [demoMixin]
 }
 </script>
