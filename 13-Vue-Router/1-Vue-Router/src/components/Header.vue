@@ -9,7 +9,7 @@
         </router-link>
         <router-link 
             active-class="active"
-            to="/user/35"
+            to="/user"
             exact
             tag="li">
             <a>User</a>
